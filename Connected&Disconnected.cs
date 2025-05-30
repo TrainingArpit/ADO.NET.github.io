@@ -18,12 +18,12 @@ namespace ConnectPrac1
               SqlConnection conn = new SqlConnection(constr);
              conn.Open();
             SqlCommand cmd = new SqlCommand("Select * from Customers",conn);
-            // SqlDataReader reader = cmd.ExecuteReader();//for fetching data from database
+            // SqlDataReader reader = cmd.ExecuteReader();//for fetching data from database //we use SqlDataReader for Connected data
 
             // while(reader.Read()) {
             //   Console.WriteLine(reader["Cust_Name"] + " " + reader["Cust_Id"]);
             //}
-        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+        SqlDataAdapter adapter = new SqlDataAdapter(cmd);//SqlDataAdapter is used for disconnected ,here DataSet is Used that will Directly fetch the data from database
             DataSet ds = new DataSet();
             adapter.Fill(ds);
             conn.Close();
