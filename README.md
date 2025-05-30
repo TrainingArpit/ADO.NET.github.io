@@ -100,12 +100,12 @@ Like if we are Using for Sql we can use these components like - SqlConnection,Sq
 
 📖 ExecuteNonQuery -
   
-  Purpose: It is used with a SqlCommand to execute SQL statements that do not return any data(rows).
+  Purpose : It is used with a SqlCommand to execute SQL statements that do not return any data(rows).
 
 4.)🔄 SqlDataAdapter -
 
   Purpose : Acts as a bridge between the database and a Dataset or DataTable.
-  Use: Dataset and Optionally update the database later.
+  Use : Dataset and Optionally update the database later.
 
 ✅ Example:
 
@@ -115,7 +115,27 @@ Like if we are Using for Sql we can use these components like - SqlConnection,Sq
    conn.Close();
 
 📦 adapter.Fill(ds) in ADO.NET
-The Fill() method is used with a DataAdapter (like SqlDataAdapter) to populate a DataSet or DataTable with data from a database.
+    
+    
+   The Fill() method is used with a DataAdapter (like SqlDataAdapter) to populate a DataSet or DataTable with data from a database.
+   
+   Syntax : adapter.Fill(ds);
+
+ 5.)📦DataSet - (REPLICA OF THE DATABASE)
+ 
+   In-Memory representation of data (can hold multiple tables)
+
+   DataSet ds = new DataSet();
+   adapter.Fill(ds);
+   conn.Close();
+   foreach (DataRow dr in ds.Tables[0].Rows)
+   {
+     Console.WriteLine(dr["Cust_Name"] + " " + dr["Cust_Id"]);
+   }
+
+6.)🔍DataView
+
+ 
    
 
 
