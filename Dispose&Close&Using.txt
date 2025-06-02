@@ -1,0 +1,39 @@
+🔹 Close() Method:
+
+Purpose: Closes the connection to the database.
+Applies to: Classes like SqlConnection, SqlDataReader, etc.
+Effect: Returns the connection to the connection pool (if pooling is enabled), but the object can be reopened later.
+
+
+SqlConnection conn = new SqlConnection(connectionString);
+conn.Open();
+// Do work
+conn.Close(); // Closes the connection
+
+🔹 Dispose() Method:
+
+Purpose: Releases unmanaged resources used by the object.
+Implements: IDisposable interface.
+Effect: Cleans up resources more thoroughly than Close(). Often calls Close() internally.
+
+SqlConnection conn = new SqlConnection(connectionString);
+conn.Open();
+// Do work
+conn.Dispose(); // Also closes and releases resources
+
+🔹 using Statement:
+
+Purpose: Ensures that Dispose() is called automatically, even if an exception occurs.
+Best Practice: Preferred way to handle ADO.NET objects like SqlConnection, SqlCommand, and SqlDataReader.
+
+using (SqlConnection conn = new SqlConnection(connectionString))
+{
+    conn.Open();
+    // Do work
+} // Dispose() is called automatically here
+
+✅ Best Practices :
+
+#Always use using for ADO.NET objects to ensure proper cleanup.
+#Avoid manually calling Close() or Dispose() when using using.
+#Nest using blocks for multiple disposable objects (e.g., SqlConnection, SqlCommand, SqlDataReader).
